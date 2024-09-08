@@ -178,7 +178,7 @@ const Projects = ({ animationOn, projects, onProjectClick }) => {
 
       <div className="w-full max-w-3xl mx-auto">
           
-          <h1 className="h1 text-4xl py-2 text-center font-bold mt-6">Project Gallery</h1>
+          <h1 className="text-3xl lg:text-4xl py-2 text-center font-bold mt-6">Project Gallery</h1>
 
           <div className="w-full h-[500px] overflow-h  idden flex items-center justify-center relative">
               <div className="w-[750px] h-full flex justify-center items-center absolute start-1/2 top-1/2 translate-x-[-50%] translate-y-[-50%]">

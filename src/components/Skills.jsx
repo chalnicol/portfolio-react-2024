@@ -37,7 +37,7 @@ const Skills = ({ skills }) => {
 
       <div className="w-11/12 max-w-4xl mx-auto pointer-none">
 
-          <h1 className="text-4xl py-6 text-center font-bold">Skills</h1>
+          <h1 className="text-3xl lg:text-4xl py-6 text-center font-bold">Skills</h1>
 
           <div className="w-full grid md:grid-cols-2 gap-x-10 gap-y-2 mt-2 pointer-none">
 

@@ -96,7 +96,7 @@ const WorkHistory = ({ workHistory }) => {
 
             <div className="w-11/12 max-w-3xl flex flex-col items-center justify-center mx-auto pointer-none">
 
-                <h1 className="lg:text-4xl pb-6 mt-12 text-center font-bold">Work Experience</h1>
+                <h1 className="text-3xl lg:text-4xl pb-6 mt-12 text-center font-bold">Work Experience</h1>
 
                 { workHistory.map ((work, index) => (
 

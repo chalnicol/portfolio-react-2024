@@ -51,7 +51,7 @@ const About = ({ pictures, firstName, description, onButtonClick }) => {
 
       }, 'start')
 
-      .to ('.about-arrow', { yPercent : '+=20', yoyo:true, repeat : -1, duration : 1, ease : 'elastic.in(1, 0.8)', yoyoEase: 'elastic.out(1, 0.8)' }, 'start');
+      // .to ('.about-arrow', { yPercent : '+=15', yoyo:true, repeat : -1, duration : 1, ease : 'linear' }, 'start');
 
   }
   const resumeAnimation = () => {
@@ -110,8 +110,8 @@ const About = ({ pictures, firstName, description, onButtonClick }) => {
             </div>
 
             <div className="my-6">
-                <button id="main-cta" className="text-lg md:text-xl py-3 px-6 font-bold rounded-s-full rounded-e-full bg-gray-800 text-white flex items-center mx-auto" onClick={handleButtonClick}>
-                    <span>VIEW MY WORK</span><span className="about-arrow ml-2 material-symbols-outlined md:text-[1.5rem]">arrow_circle_down </span>
+                <button id="main-cta" className="lg:text-xl py-2 px-5 lg:py-3 lg:px-6 font-bold rounded-s-full rounded-e-full bg-gray-800 text-white flex items-center mx-auto" onClick={handleButtonClick}>
+                    <span>VIEW MY WORK</span><span className="about-arrow ml-2 material-symbols-outlined">arrow_circle_down </span>
                 </button>
             </div>
         </div>
