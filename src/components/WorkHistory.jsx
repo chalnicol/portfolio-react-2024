@@ -92,11 +92,11 @@ const WorkHistory = ({ workHistory }) => {
 
     return (
 
-        <section id="experience" className="bg-gray-100 md:px-0 px-3 pb-[100px] w-full min-h-[calc(100dvh-4rem)]">
+        <section id="experience" className="bg-gray-100 dark:bg-gray-700 md:px-0 px-3 pb-[100px] w-full min-h-[calc(100dvh-4rem)]">
 
             <div className="w-11/12 max-w-3xl flex flex-col items-center justify-center mx-auto pointer-none">
 
-                <h1 className="text-3xl lg:text-4xl pb-6 mt-12 text-center font-bold">Work Experience</h1>
+                <h1 className="text-3xl lg:text-4xl pb-6 mt-12 text-center font-bold dark:text-gray-200">Work Experience</h1>
 
                 { workHistory.map ((work, index) => (
 
@@ -106,46 +106,46 @@ const WorkHistory = ({ workHistory }) => {
 
                             { index === 0 ? (
                                 <>
-                                    <div className="w-vline absolute h-[65%] w-1 bg-black start-1 top-[35%] translate-x-[-50%] rounded-t-full"></div>
-                                    <div className="absolute w-4 h-4 bg-black start-1 origin-center rounded-full top-[35%] start-1 translate-x-[-50%] translate-y-[-50%]"></div>
+                                    <div className="w-vline absolute h-[65%] w-1 bg-black dark:bg-gray-500 start-1 top-[35%] translate-x-[-50%] rounded-t-full"></div>
+                                    <div className="absolute w-4 h-4 bg-black dark:bg-gray-500 start-1 origin-center rounded-full top-[35%] start-1 translate-x-[-50%] translate-y-[-50%]"></div>
                                     
                                     {/* <div className='absolute top-[35%] start-1 font-bold translate-x-[-50%] translate-y-[-50%] bg-gray-100 border-2 border-black text-xs rounded rotate-[-20deg] px-2 py-1'>start</div> */}
 
                                 </>
                             ) : index === (workHistory.length - 1) ? (
                                 <>
-                                    <div className="w-vline absolute h-[65%] w-1 bg-black start-1 translate-x-[-50%] rounded-b-full"></div>
-                                    <div className="absolute w-4 h-4 bg-black start-1 origin-center rounded-full top-[65%] translate-x-[-50%] translate-y-[-50%]"></div>
+                                    <div className="w-vline absolute h-[65%] w-1 bg-black dark:bg-gray-500 start-1 translate-x-[-50%] rounded-b-full"></div>
+                                    <div className="absolute w-4 h-4 bg-black dark:bg-gray-500 start-1 origin-center rounded-full top-[65%] translate-x-[-50%] translate-y-[-50%]"></div>
                                     
                                     {/* <div className='absolute top-[65%] start-1 font-bold translate-x-[-50%] translate-y-[-50%] bg-gray-100 border-2 border-black text-xs rounded rotate-[-20deg] px-2 py-1'>end</div> */}
 
                                 </>
 
                             ) : (
-                                <div className="w-vline absolute h-full w-1 bg-black start-1 translate-x-[-50%] "></div>
+                                <div className="w-vline absolute h-full w-1 bg-black dark:bg-gray-500 start-1 translate-x-[-50%] "></div>
                             )}
                             
-                            <div className="w-hline absolute w-full h-1 bg-black start-1 top-1/2 origin-center translate-y-[-50%] rounded-full hidden"></div>
+                            <div className="w-hline absolute w-full h-1 bg-black dark:bg-gray-500 start-1 top-1/2 origin-center translate-y-[-50%] rounded-full hidden"></div>
 
-                            <div className="w-circ absolute w-3 h-3 bg-black start-1 origin-center rounded-full top-1/2 translate-x-[-50%] translate-y-[-50%] hidden"></div>
+                            <div className="w-circ absolute w-3 h-3 dark:bg-gray-500 bg-black start-1 origin-center rounded-full top-1/2 translate-x-[-50%] translate-y-[-50%] hidden"></div>
                         </div>
 
                         <div className="grow py-2 z-20">
 
                             <div className="w-card relative">
                                 
-                                <div className="content bg-white rounded-lg border border-black shadow-lg overflow-hidden scale-0">
+                                <div className="content bg-white dark:bg-gray-800 rounded-lg border border-black dark:border-gray-700 shadow-lg overflow-hidden scale-0">
 
-                                    <div className="bg-gray-800 text-sm text-white p-3">
+                                    <div className="bg-gray-800 dark:bg-gray-900 text-sm text-white dark:text-gray-400 p-3">
                                         {`${work.start} - ${work.end}`}
                                     </div> 
 
                                     <div className="px-3 md:px-5 pb-8 pt-2">
-                                        <div className="font-bold text-xl md:text-2xl">
+                                        <div className="font-bold text-xl md:text-2xl dark:text-gray-400 ">
                                             {work.position}
                                         </div>
                                         {work.company && (
-                                            <div className="text-sm text-gray-600">
+                                            <div className="text-sm text-gray-600 dark:text-gray-500">
                                                 Company: <span className="font-semibold">{work.company}</span>
                                             </div>
                                         )}
@@ -153,7 +153,7 @@ const WorkHistory = ({ workHistory }) => {
                                             <ul className="list-disc">
                                                 {work.jobDescription.map((desc,index) => (
 
-                                                    <li key={index} className="text-gray-700 text-sm md:text-base">{desc}</li>
+                                                    <li key={index} className="text-gray-700 dark:text-gray-400 text-sm md:text-base">{desc}</li>
 
                                                 ))}
                                             

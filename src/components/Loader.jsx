@@ -88,11 +88,11 @@ const Loader = ({onLoaded}) => {
     }, [])
 
     return (
-      <div className="ls-container absolute h-full w-full bg-white flex items-center justify-center bg-gray-500 z-[99] top-0 start-0">
-          <div className="w-[75%] max-w-[450px] border border-gray-500 rounded-md bg-white px-5 py-4 shadow-lg">
-              <span className="font-medium text-sm">Loading Page</span>
-              <div className="w-full h-1 mt-2 rounded overflow-hidden border border-black relative bg-gray-100" >
-                  <div className="loading-progress w-0 h-full absolute bg-gray-700"></div>
+      <div className="ls-container absolute h-full w-full bg-white dark:bg-gray-800 flex items-center justify-center bg-gray-500 z-[99] top-0 start-0">
+          <div className="w-[75%] max-w-[450px] border border-gray-500 rounded-md bg-white dark:bg-gray-800 dark:border-gray-200 px-5 py-4 shadow-lg">
+              <span className="font-medium text-sm dark:text-gray-200">Loading Page</span>
+              <div className="w-full h-1 mt-2 rounded overflow-hidden border border-black relative bg-gray-100 dark:bg-gray-700" >
+                  <div className="loading-progress w-0 h-full absolute bg-gray-700 dark:bg-gray-200"></div>
               </div>
           </div>
       </div>

@@ -33,13 +33,13 @@ const Skills = ({ skills }) => {
   
   return (
 
-    <section id="skills" className="bg-white md:px-0 px-3 pb-[50px] w-full min-h-[calc(100dvh-4rem)] flex justify-center items-center">
+    <section id="skills" className="bg-white dark:bg-gray-800 md:px-0 px-3 pb-[50px] w-full min-h-[calc(100dvh-4rem)] flex justify-center items-center">
 
       <div className="w-11/12 max-w-4xl mx-auto pointer-none">
 
-          <h1 className="text-3xl lg:text-4xl py-6 text-center font-bold">Skills</h1>
+          <h1 className="text-3xl lg:text-4xl py-6 text-center font-bold dark:text-white">Skills</h1>
 
-          <div className="w-full grid md:grid-cols-2 gap-x-10 gap-y-2 mt-2 pointer-none">
+          <div className="w-full grid md:grid-cols-2 gap-x-14 gap-y-2 mt-2 pointer-none">
 
             {skills.map((skill, index) => (
 

@@ -3,39 +3,16 @@ import gsap from 'gsap';
 
 
 
-const Navbar = ({ onNavClick }) => {
+const Navbar = ({ onNavClick, onThemeClick }) => {
 
 
-  // const [darkMode, setDarkMode] = useState(false);
   // const [menuOpen, setMenuOpen] = useState(false);
 
-  // useEffect(() => {
-  //   const storedTheme = localStorage.getItem('theme');
-  //   if (storedTheme === 'dark') {
-  //     setDarkMode(true);
-  //     document.documentElement.classList.add('dark');
-  //   } else {
-  //     setDarkMode(false);
-  //     document.documentElement.classList.remove('dark');
-  //   }
-  // }, []);
-
-  // const toggleTheme = () => {
-  //   setDarkMode(!darkMode);
-  //   if (!darkMode) {
-  //     document.documentElement.classList.add('dark');
-  //     localStorage.setItem('theme', 'dark');
-  //   } else {
-  //     document.documentElement.classList.remove('dark');
-  //     localStorage.setItem('theme', 'light');
-  //   }
-  // };
-
-  // const toggleMenu = () => {
-  //   setMenuOpen(!menuOpen);
-  // };
+ 
 
     const [menuOpen, setMenuOpen ] = useState(false);
+    const [darkMode, setDarkMode] = useState(false);
+
 
     const handleLinkClick = (event, targetId) => {
         event.preventDefault();
@@ -77,6 +54,44 @@ const Navbar = ({ onNavClick }) => {
         { title : "Contacts", href : "#contacts" },
     ];
 
+    useEffect(() => {
+        const storedTheme = localStorage.getItem('theme');
+        if (storedTheme) {
+        // If theme is stored, use that
+        setDarkMode(storedTheme === 'dark');
+        if (storedTheme === 'dark') {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+        } else {
+        // If no theme is stored, use system preference
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (prefersDark) {
+            setDarkMode(true);
+            document.documentElement.classList.add('dark');
+        } else {
+            setDarkMode(false);
+            document.documentElement.classList.remove('dark');
+        }
+        }
+    }, []);
+
+    const toggleTheme = () => {
+        setDarkMode(!darkMode);
+        if (!darkMode) {
+            document.documentElement.classList.add('dark');
+            localStorage.setItem('theme', 'dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+            localStorage.setItem('theme', 'light');
+        }
+    };
+
+    const toggleMenu = () => {
+        setMenuOpen(!menuOpen);
+    };
+
     return (
 
         <nav className="bg-gray-900 h-16 w-full border-b-2 border-gray-300 text-white shadow-md sticky top-0 z-[50]">
@@ -93,22 +108,26 @@ const Navbar = ({ onNavClick }) => {
                     </div>
                 </div>
 
-                <div id="nav-right" className="md:flex items-center gap-4">
+                <div id="nav-right" className="flex items-center gap-4">
 
                     <div id="nav-right-links" className="hidden md:block">
+
                         <div className="flex items-center gap-6">
 
-                        {links.map ( (link, index) => (
-                        
-                            <div key={index}>
-                                <a href={link.href} className="my-link hover:text-gray-300" onClick={(e) => handleLinkClick(e, link.href)}>{link.title}</a>
-                            </div>
-
-                        ))}
-
+                            {links.map ( (link, index) => (
                             
+                                <div key={index}>
+                                    <a href={link.href} className="my-link hover:text-gray-300" onClick={(e) => handleLinkClick(e, link.href)}>{link.title}</a>
+                                </div>
+
+                            ))}
+
                         </div>
                     </div>
+
+                    <button class="border border-gray-500 rounded flex items-center px-1" onClick={toggleTheme}>
+                        <span class="material-symbols-outlined text-base">{ darkMode ? 'light_mode' : 'dark_mode' }</span>
+                    </button>
 
                     <div id="nav-right-hamburger" className="md:hidden" >
                         <span className="material-symbols-outlined leading-normal active:scale-90" onClick={handleToggleMenu}>
@@ -129,8 +148,6 @@ const Navbar = ({ onNavClick }) => {
                             </div>
                             </a>
                         ))}
-
-                    
                 </div>
                     
                 </div>

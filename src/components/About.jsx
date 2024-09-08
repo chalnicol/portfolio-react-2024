@@ -88,29 +88,29 @@ const About = ({ pictures, firstName, description, onButtonClick }) => {
 
   return (
 
-    <section id="about" className="bg-white md:px-0 w-full min-h-[calc(100dvh-4rem)] flex justify-center items-center">
+    <section id="about" className="bg-white dark:bg-gray-800 md:px-0 w-full min-h-[calc(100dvh-4rem)] flex justify-center items-center">
         <div>
             <div className="flex items-center justify-center gap-2 my-8">
 
             {pictures.map((pic, index) => (
-              <div key={index} className={`profile-img h-24 w-24 lg:h-32 lg:w-32 border-8 border-gray-200 rounded-md overflow-hidden shadow-xl`} style={{ transform: `rotate(${index * 20 + 20}deg)` }}>
+              <div key={index} className={`profile-img h-24 w-24 lg:h-32 lg:w-32 border-8 border-gray-200 dark:border-gray-500 rounded-md overflow-hidden shadow-xl`} style={{ transform: `rotate(${index * 20 + 20}deg)` }}>
                 <img className="w-full h-full" src={`/assets/images/${pic}`} alt="" style={imgStyle}/>
               </div>
             ))}
                 
             </div>
             <div className="w-11/12 max-w-2xl mx-auto">
-                <div className="text-center font-bold text-2xl lg:text-4xl xl:text-5xl">
+                <div className="text-center font-bold text-2xl lg:text-4xl xl:text-5xl dark:text-gray-200">
                     Hi, I am {firstName}
                 </div>
                 <hr className="my-3" />
-                <p className="indent-8 text-justify text-md">
+                <p className="indent-8 text-justify text-md dark:text-gray-200">
                     {description}
                 </p>
             </div>
 
             <div className="my-6">
-                <button id="main-cta" className="lg:text-xl py-2 px-5 lg:py-3 lg:px-6 font-bold rounded-s-full rounded-e-full bg-gray-800 text-white flex items-center mx-auto" onClick={handleButtonClick}>
+                <button id="main-cta" className="lg:text-xl py-2 px-5 lg:py-3 lg:px-6 font-bold rounded-s-full rounded-e-full bg-gray-800 dark:bg-gray-600 text-white flex items-center mx-auto dark:text-gray-200" onClick={handleButtonClick}>
                     <span>VIEW MY WORK</span><span className="about-arrow ml-2 material-symbols-outlined">arrow_circle_down </span>
                 </button>
             </div>

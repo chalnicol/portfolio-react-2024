@@ -31,17 +31,17 @@ const Skill = ({ skill, show }) => {
 
         <div className="flex items-center">
 
-            <div className="min-w-[40%] md:min-w-[33%] font-bold text-md md:text-lg">{name}</div>
+            <div className="min-w-[40%] md:min-w-[33%] font-bold text-md md:text-lg dark:text-gray-200">{name}</div>
 
-            <div className="grow bg-gray-300 border border-gray-300 relative h-6 2xl:h-7 overflow-hidden">
+            <div className="grow bg-gray-300 dark:bg-gray-200 border border-gray-300 dark:border-gray-500 relative h-6 2xl:h-7 overflow-hidden">
 
                 <div ref={bar} className="absolute w-[3%] h-full">
 
-                    <div className="absolute h-full w-full border-r-4 border-red-800 bg-gray-800"></div>
+                    <div className="absolute h-full w-full border-r-4 border-red-800 bg-gray-800 dark:bg-gray-700 dark:border-red-600"></div>
 
                     <div className="absolute h-full w-full flex justify-end items-center pr-3 " >
 
-                        <span className="text-xs text-white font-bold">{displayWidth}%</span> 
+                        <span className="text-xs text-white font-bold dark:text-gray-200">{displayWidth}%</span> 
 
                     </div>
 

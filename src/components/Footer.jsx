@@ -13,33 +13,32 @@ const Footer = ({ details }) => {
                 <h1 className="text-2xl font-bold mb-2">Contacts</h1>
                 <hr className="border-white border-b" />
 
-                <div className="flex items-center gap-4 my-3 text-gray-300">
+                <div className="flex items-center gap-4 my-3">
                     <span className="material-symbols-outlined">
                         mail
                     </span>
                     <span>{details.email}</span>
                 </div>
 
-                <div className="flex items-center gap-4 my-3 text-gray-300">
+                <div className="flex items-center gap-4 my-3">
                     <span className="material-symbols-outlined">
                         globe
                     </span>
                     <span>{details.website}</span>
 
                 </div>
-                <div className="flex items-center gap-4 my-3 text-gray-300">
+                <div className="flex items-center gap-4 my-3">
                     <span className="material-symbols-outlined">
                         smartphone
                     </span>
                     <span>{details.phone}</span>
 
                 </div>
-                <div className="flex items-center gap-4 my-3 text-gray-300">
+                <div className="flex items-center gap-4 my-3">
                     <span className="material-symbols-outlined">
                         home
                     </span>
                     <span>{details.address}</span>
-
                 </div>
 
                 <h1 className="text-2xl font-bold mb-2 mt-12">Socials</h1>
@@ -68,7 +67,7 @@ const Footer = ({ details }) => {
 
         </div>
 
-        <div className="text-center text-white text-xs py-2 bg-gray-800">
+        <div className="text-center text-white text-xs py-2 bg-gray-800 dark:text-gray-200">
             @ 2024 Chalnicol. Built using React + GSAP + Tailwind
         </div>
         

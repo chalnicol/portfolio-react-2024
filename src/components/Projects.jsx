@@ -174,27 +174,27 @@ const Projects = ({ animationOn, projects, onProjectClick }) => {
   }
 
   return (
-    <section id="projects" className="bg-gray-100 pb-[50px] w-full min-h-[calc(100dvh-4rem)] flex justify-center items-center overflow-hidden">
+    <section id="projects" className="bg-gray-100 dark:bg-gray-700 pb-[50px] w-full min-h-[calc(100dvh-4rem)] flex justify-center items-center overflow-hidden">
 
       <div className="w-full max-w-3xl mx-auto">
           
-          <h1 className="text-3xl lg:text-4xl py-2 text-center font-bold mt-6">Project Gallery</h1>
+          <h1 className="text-3xl lg:text-4xl py-2 text-center font-bold mt-6 dark:text-gray-200">Project Gallery</h1>
 
           <div className="w-full h-[500px] overflow-h  idden flex items-center justify-center relative">
               <div className="w-[750px] h-full flex justify-center items-center absolute start-1/2 top-1/2 translate-x-[-50%] translate-y-[-50%]">
 
                   {projects.map ((project, index) => (
                     
-                    <div key={index} data-index={index} data-type={project.type} data-url={project.url} className="project-card p-3 absolute bg-white h-auto w-[240px] aspect-[0.75] shadow-lg rounded-lg overflow-hidden border border-gray-400 hover:bg-gray-100 select-none" onClick={(e) => handleClick(e.target.dataset)}>
+                    <div key={index} data-index={index} data-type={project.type} data-url={project.url} className="project-card p-3 absolute bg-white dark:bg-gray-600 h-auto w-[240px] aspect-[0.75] shadow-lg rounded-lg overflow-hidden border border-gray-400 dark:border-gray-500 select-none" onClick={(e) => handleClick(e.target.dataset)}>
 
-                      <div className="w-full h-auto aspect-square border border-gray-400 overflow-hidden pointer-events-none">
+                      <div className="w-full h-auto aspect-square border border-gray-500 dark:border-gray-600 overflow-hidden pointer-events-none">
                           <img className="w-full h-full object-cover" src={`/assets/images/recentwork/${project.image}`} alt={project.title} />
                       </div>
                       <div className="grow overflow-hidden py-1 pointer-events-none">
 
-                          <div className="font-bold text-lg">{project.title}</div>
+                          <div className="font-bold text-lg dark:text-gray-200">{project.title}</div>
 
-                          <div className="text-sm">
+                          <div className="text-sm dark:text-gray-200">
                               {project.description}
                           </div>
                       </div>
@@ -207,19 +207,19 @@ const Projects = ({ animationOn, projects, onProjectClick }) => {
                   <div className="controls w-[35%] h-8 bottom-1 absolute z-[999]">
                     <div className="w-full h-full grid grid-cols-3 justify-around gap-2">
 
-                        <button data-name="left" className="bg-gray-800 h-full text-white hover:bg-gray-600 rounded flex items-center justify-center" title="rotate cards to the left" onClick={(e) => handleControlsClick(e)}>
+                        <button data-name="left" className="bg-gray-800 dark:bg-gray-600 border border-gray-500 h-full text-white hover:bg-gray-600 rounded flex items-center justify-center" title="rotate cards to the left" onClick={(e) => handleControlsClick(e)}>
                             <span className="material-symbols-outlined font-bold pointer-events-none">
                                 chevron_left
                             </span>
                         </button>
 
-                        <button data-name="right" className="bg-gray-800 h-full text-white hover:bg-gray-600 rounded flex items-center justify-center" title="rotate cards to the right" onClick={(e) => handleControlsClick(e)}>
+                        <button data-name="right" className="bg-gray-800 dark:bg-gray-600 border border-gray-500 h-full text-white hover:bg-gray-600 rounded flex items-center justify-center" title="rotate cards to the right" onClick={(e) => handleControlsClick(e)}>
                             <span className="material-symbols-outlined font-bold pointer-events-none">
                                 chevron_right
                                 </span>
                         </button>
 
-                        <button data-name="toggle" className="bg-gray-800 h-full text-white hover:bg-gray-600 rounded flex items-center justify-center" title="toggle auto-rotate cards" onClick={(e) => handleControlsClick(e)}>
+                        <button data-name="toggle" className="bg-gray-800 dark:bg-gray-600 border border-gray-500 h-full text-white hover:bg-gray-600 rounded flex items-center justify-center" title="toggle auto-rotate cards" onClick={(e) => handleControlsClick(e)}>
                             <span className="material-symbols-outlined pointer-events-none">
                                 {autoSpin ? 'pause' : 'play_arrow'}
                             </span>
