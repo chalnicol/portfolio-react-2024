@@ -6,6 +6,7 @@ import Projects from './components/Projects';
 import Skills from './components/Skills';
 import WorkHistory from './components/WorkHistory';
 import ProjectModal from './components/ProjectModal';
+import Loader from './components/Loader';
 
 
 import gsap from 'gsap';
@@ -16,30 +17,12 @@ function App() {
 
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true); // Add loading state
-  const [ aboutAnimationOn, setAboutAnimationOn ] = useState(false);
   const [ projectAnimation, setProjectAnimationOn ] = useState(true);
   const [ projectModalShown, setProjectModalShown ] = useState(false);
   const [ projectModalData, setProjectModalData ] = useState(null);
 
   gsap.registerPlugin(ScrollToPlugin);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch('/assets/data/profile.json'); // Fetch JSON data
-        const result = await response.json();
-        setData(result); // Set fetched data
-      } catch (error) {
-        console.error('Error fetching the JSON:', error); // Handle any errors
-      } finally {
-        setLoading(false); // Stop loading regardless of success or failure
-      }
-    };
-
-    fetchData(); // Call the async function
-
-    
-  }, []);
 
   const scrollTo = (sectionId) => {
     gsap.to(window, { duration: 0.5, ease: 'linear', scrollTo: { y: sectionId, offsetY: 60 } }); // scroll to section
@@ -50,15 +33,13 @@ function App() {
     scrollTo('#projects'); // Scroll to the projects section
   };
 
-  const handleProjectClick = ( data ) => {
-    openProjectModal (data);
+  const handleProjectClick = ( modalData ) => {
+    openProjectModal (modalData);
   };
 
-  
-
-  const openProjectModal = (data) => {
+  const openProjectModal = (modalData) => {
     // console.log ('opening modal', data )
-    setProjectModalData(data);
+    setProjectModalData(modalData);
     setProjectModalShown(true);
     setProjectAnimationOn(false);
   }
@@ -69,18 +50,23 @@ function App() {
     setProjectAnimationOn(true);
   }
 
-  //scrollTriggers..
-
-  
-  
+  const handleLoaded =  (pData) => {
+    setData(pData);
+    setLoading(false);
+  }
 
   return (
 
     <>
+      
       <NavBar onNavClick={scrollTo}/>
+      
+      
+      <Loader onLoaded={handleLoaded} />
 
       { !loading && (
         <>
+
           <About  pictures={data.profile.pictures} firstName={data.profile.firstName} description={data.profile.about} onButtonClick={handleHeroButtonClick}/>
           
           <Projects animationOn={projectAnimation} projects={data.profile.recentWorks} onProjectClick={handleProjectClick} />
@@ -95,8 +81,10 @@ function App() {
           
 
         </>
+
       )}
 
+     
     </>
   
   )

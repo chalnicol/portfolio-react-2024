@@ -6,6 +6,6 @@
 
 html, body {
   font-family: "Poppins", sans-serif;
-  height: 100vh;
+  height: 100dvh;
   scroll-behavior: smooth;
 }

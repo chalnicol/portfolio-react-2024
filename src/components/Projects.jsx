@@ -174,7 +174,7 @@ const Projects = ({ animationOn, projects, onProjectClick }) => {
   }
 
   return (
-    <section id="projects" className="bg-gray-100 pb-[50px] w-full min-h-[calc(100vh-4rem)] flex justify-center items-center overflow-hidden">
+    <section id="projects" className="bg-gray-100 pb-[50px] w-full min-h-[calc(100dvh-4rem)] flex justify-center items-center overflow-hidden">
 
       <div className="w-full max-w-3xl mx-auto">
           

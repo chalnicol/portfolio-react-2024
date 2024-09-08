@@ -33,7 +33,7 @@ const Skills = ({ skills }) => {
   
   return (
 
-    <section id="skills" className="bg-white md:px-0 px-3 pb-[50px] w-full min-h-[calc(100vh-4rem)] flex justify-center items-center">
+    <section id="skills" className="bg-white md:px-0 px-3 pb-[50px] w-full min-h-[calc(100dvh-4rem)] flex justify-center items-center">
 
       <div className="w-11/12 max-w-4xl mx-auto pointer-none">
 

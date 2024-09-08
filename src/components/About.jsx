@@ -88,7 +88,7 @@ const About = ({ pictures, firstName, description, onButtonClick }) => {
 
   return (
 
-    <section id="about" className="bg-white md:px-0 w-full min-h-[calc(100vh-4rem)] flex justify-center items-center">
+    <section id="about" className="bg-white md:px-0 w-full min-h-[calc(100dvh-4rem)] flex justify-center items-center">
         <div>
             <div className="flex items-center justify-center gap-2 my-8">
 

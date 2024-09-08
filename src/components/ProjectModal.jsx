@@ -52,7 +52,7 @@ const ProjectModal = ({ data, shown, onCloseClick }) => {
 
   return (
     
-    <div className={`fixed h-screen w-full top-0 start-0 z-[99] ${data ? 'block' : 'hidden' }`}>
+    <div className={`fixed h-full w-full top-0 start-0 z-[99] ${data ? 'block' : 'hidden' }`}>
 
         <div className="absolute w-full h-full bg-black opacity-[0.8]"></div>
 

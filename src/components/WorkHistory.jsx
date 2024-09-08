@@ -92,7 +92,7 @@ const WorkHistory = ({ workHistory }) => {
 
     return (
 
-        <section id="experience" className="bg-gray-100 md:px-0 px-3 pb-[100px] w-full min-h-[calc(100vh-4rem)]">
+        <section id="experience" className="bg-gray-100 md:px-0 px-3 pb-[100px] w-full min-h-[calc(100dvh-4rem)]">
 
             <div className="w-11/12 max-w-3xl flex flex-col items-center justify-center mx-auto pointer-none">
 
