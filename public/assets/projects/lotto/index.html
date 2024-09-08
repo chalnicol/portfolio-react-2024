@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1.0, user-scalable=no">
+    
+    <title>Document</title>
+
+    <script src="js/gsap.min.js"></script>
+
+    <script src="js/Draggable.min.js"></script>
+
+    <script src="js/InertiaPlugin.min.js"></script>
+
+    <script src="js/main.js"></script>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    
+
+    <div class="container">
+        
+        
+           
+        <div class="top">
+            <h1>PCSO Lotto Games</h1>
+        </div>
+
+        <div class="menu-cont">
+            <!-- 
+                <div class="menu-item menu-item-1">
+                <div class="menu-item-title">6/42</div>
+                <div class="menu-item-desc">Lotto Game</div>
+            </div>
+            -->
+        </div>
+
+        <div class="card-cont">
+
+            <div class="back"></div>
+            <div class="card-title">6/42</div>
+            <div class="card-desc">Lotto Game</div>
+            <div class="card-body">
+
+                <p>Click  <span>Add Entry</span> below to add. </p>
+                
+                <!-- 
+                <div class="card-element card-element-1">
+                    <div class="card-letter">A:</div>
+                    <div class="card-numbers">
+                        <div class="card-number card-number-1">99</div>
+                        <div class="card-number card-number-2">99</div>
+                        <div class="card-number card-number-3">99</div>
+                        <div class="card-number card-number-4">99</div>
+                        <div class="card-number card-number-5">99</div>
+                        <div class="card-number card-number-6">99</div>
+                    </div>
+                    <div class="card-lp-indicator">LP</div>
+                </div> 
+                -->
+                
+            </div>
+
+            <div class="card-controls">
+
+                <div class="card-button card-button-1">ADD ENTRY</div>
+
+                <div class="card-button card-button-2 is-disabled">SIMULATE DRAW</div>
+
+            </div>
+            
+
+
+        </div> 
+
+
+        <div class="card-keyboard">
+
+        
+
+            <div class="card-keys-controller">
+                <div class="card-key-bottom"> 
+                    CLOSE
+                </div>
+                <div class="card-key-bottom">- RESET KEYS</div>
+                <div class="card-key-bottom">+ LUCKY PICK</div>
+            </div>
+
+            <div class="card-keys-messaging">PICK 6 NUMBERS</div>
+            <div class="card-keys"></div>
+
+        </div>
+
+        <div class="simulation-cont">
+
+            <div class="main-circle"></div>
+
+            <div class="caption">DRAW LOTTO</div>
+
+            <div class="circles">            
+                <div class="circle circle-1"></div>
+                <div class="circle circle-2"></div>
+                <div class="circle circle-3"></div>
+                <div class="circle circle-4"></div>
+                <div class="circle circle-5"></div>
+                <div class="circle circle-6"></div>
+            </div>
+
+            <div class="draw-progress"></div>
+        </div>
+
+        <div class="drawn-cont">
+
+            <div class="d-circles">            
+                <div class="d-circle d-circle-1"></div>
+                <div class="d-circle d-circle-2"></div>
+                <div class="d-circle d-circle-3"></div>
+                <div class="d-circle d-circle-4"></div>
+                <div class="d-circle d-circle-5"></div>
+                <div class="d-circle d-circle-6"></div>
+            </div>
+
+            <div class="drawn-title">-- Winning Numbers --</div>
+
+            <div class="drawn-messaging">Sorry! You did not hit the jackpot.</div>
+
+        </div>
+
+    </div>
+    
+    <div class="fs-btn fs-btn-open"></div>
+    <div class="fs-btn fs-btn-close"></div>
+
+
+</body>
+</html>

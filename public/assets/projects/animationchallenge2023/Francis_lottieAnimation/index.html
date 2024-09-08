@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Lottie</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+         <style>
+          body{
+            background-color: black;
+          }
+          .container{
+             position: absolute;
+             left:50%;
+             top:50%;
+             width:50%;
+             transform:translate(-50%,-50%);
+          }
+          #jraudio{
+             position:absolute;
+             top:0%;
+             left:0%;
+             transform: translateX(-12%) scale(0.7);
+             z-index:99999999;
+          }
+        </style>
+         <script src="js/lottie-player.js"></script> 
+    </head>
+    <body>
+     
+      <div class="container">
+        <audio id="jraudio" controls>
+          <source src="bg.mp3" type="audio/ogg">
+          <source src="bg.mp3" type="audio/mpeg">
+        </audio>
+     <lottie-player id="jrlottie" src="FrancisLT.json" background="transparent" speed="1" loop></lottie-player>
+     </div>
+   
+     <script>
+       var aud = document.getElementById("jraudio");
+       var loty = document.getElementById("jrlottie");
+       aud.onplay = ()=> loty.play();
+       aud.onpause = ()=> loty.pause();
+       aud.onended = ()=> loty.stop();
+     </script>
+    </body>
+</html>

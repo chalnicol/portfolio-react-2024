@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+
+    <title>Document</title>
+
+    <!-- <script src="gsap.min.js"></script> -->
+
+    <style>
+
+        @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500&display=swap');
+
+        * {
+            margin : 0;
+            padding : 0;
+            box-sizing: border-box;
+        }
+        html, body {
+            width: 100vw;
+            height: 100vh;
+            background-color: #3a3a3a;
+            font-family: 'Rubik';
+            font-weight: 300;
+           
+            
+        }
+
+        .container {
+
+            width: 100%;
+            height : 100%;
+            position: absolute;
+
+            background: url('images/bg.png') no-repeat center center / contain;
+            /* background-color: #fefefe; */
+            /* border : 1px solid #6e6e6e; */
+
+            border-radius: 15px;
+            box-shadow: 3px 3px 10px #1c1c1c;
+            left : 50%;
+            top : 50%;
+            transform: translate(-50%, -50%);
+            display: none;
+
+            overflow: hidden;
+
+
+        }
+        .container * {
+            user-select: none;
+            position: absolute;
+            pointer-events: none;
+        }
+
+
+        .grid-cont, .cells-cont {
+            
+            position: absolute;
+            left : 50%;
+            top : 50%;
+            transform: translate(-50%, -50%);
+            width: 94.5%;
+            height : 94.5%;
+            display: grid;
+
+        }
+        .grid-cell {
+            box-shadow: 5px 5px 20px #3a3a3a inset;
+            background-color: #dedede;
+            position: relative;
+        }
+       
+        .cell {
+
+            border : 1px solid #6e6e6e;
+
+            max-width: 100%;
+            height : 100%;
+            overflow: hidden;
+            position : relative;
+            pointer-events: auto;
+        }
+        .cell-img {
+            background: url('images/img1.gif') no-repeat center center / cover;
+        }
+        .cell-top {
+            width: 100%;
+            height : 100%;
+            position: absolute;
+            top : 0%;
+            background : url('images/top.png') no-repeat center center / cover; 
+        }
+       
+        .splash-screen {
+            width: 100%;
+            height : 100%;
+            background: url('images/splash-screen.png') no-repeat center center / contain;
+            display: block;
+        }
+        .end-screen {
+            width: 100%;
+            height : 100%;
+            background: url('images/end-screen.png') no-repeat center center / contain;
+            opacity: 0;
+            display: block;
+        }
+        .cell-post {
+            width: 12%;
+            height : 12%;
+            background-color: #ffffff;
+            opacity: 0;
+        }
+
+        .btn-hs {
+
+            left : 50%;
+            top : 45.5%;
+            transform: translateX(-50%);
+
+            width: 35%;
+            height : 15%;
+            pointer-events: auto;
+            /* background-color: #ff000099; */
+            display: none;
+        }
+
+        .arr {
+            width: 100%;
+            height : 100%;
+            opacity: 0;
+        }
+        .arr-1 {
+            background: url('images/arr_left.png') no-repeat center center / contain;
+        }
+        .arr-2 {
+            background: url('images/arr_right.png') no-repeat center center / contain;
+        }
+
+        .arr-hs {
+
+            top : 47%;
+            width: 12%;
+            height : 12%;
+            pointer-events: auto;
+            /* background-color: #ff000099; */
+            display: none;
+        }
+        .arr-hs-1 {
+            left : 20%;
+           
+        }
+        .arr-hs-2 {
+            right : 20%;
+        }
+
+        
+       
+
+    </style>
+</head>
+<body>
+
+
+    <div class="container">
+
+        <div class="grid-cont"></div>
+
+        <div class="cells-cont"></div>
+
+        <div class="splash-screen"></div>
+
+        <div class="end-screen"></div>
+
+        <div class="arr arr-1"></div>
+        <div class="arr arr-2"></div>
+
+
+        <div class="arr-hs arr-hs-1"></div>
+        <div class="arr-hs arr-hs-2"></div>
+
+
+        <div class="btn-hs"></div>
+
+    </div>
+
+
+    <script>
+
+        let gridArr = [];
+
+        let cellsArr = [];
+
+        let openCell = 0;
+
+        let field = 0;
+
+        let keyDown = false, moving = false;
+
+        let gameOn = false, endGame = false;
+
+        //puzzle data..
+        let puzzleData = { 
+            col : 4, 
+            row : 4 
+        };
+        
+        window.addEventListener ('load', preloadFiles );
+
+        window.addEventListener ('resize', resize );
+        
+
+        function preloadFiles() {
+
+            var toPreload = [
+
+                { type: "js", url: "js/gsap.min.js" },
+                { type: "js", url: "js/hammer.min.js" },
+
+
+                { type: "image", url: "images/img1.gif" },
+                { type: "image", url: "images/bg.png" },
+                { type: "image", url: "images/top.png" },
+
+                { type: "image", url: "images/arr_left.png" },
+                { type: "image", url: "images/arr_right.png" },
+
+
+                { type: "image", url: "images/end-screen.png" },
+                { type: "image", url: "images/splash-screen.png" },
+
+
+            ];
+        
+        
+            var filesLoaded = 0, perc = 0;
+        
+            for (var i in toPreload) {
+        
+                let file;
+                
+                console.log ( i, toPreload[i].type );
+
+        
+                if (toPreload[i].type == "js") {
+            
+                    file = document.createElement("script");
+            
+                    file.src = toPreload[i].url;
+            
+                    document.body.appendChild(file);
+            
+                    // script.addEventListener("load", countLoaded);
+            
+                } else if (toPreload[i].type == "image") {
+            
+                    file = new Image();
+            
+                    file.src = toPreload[i].url;
+            
+                    // img.addEventListener("load", countLoaded);
+            
+                }
+
+        
+                file.addEventListener ('load', () => {
+            
+                    filesLoaded++;
+            
+                    console.log(filesLoaded + "/" + toPreload.length);
+            
+                    perc = (filesLoaded / toPreload.length) * 100;
+            
+                    //document.querySelector(".progress").style.width = perc + "%";
+            
+                    if (perc >= 100) {
+                        
+                        //document.querySelector(".progress-bar-cont").style.display = "none";
+                
+                        initPuzzle ();
+                    }
+            
+                });
+            
+        
+            }
+        
+        }
+
+        function resize () {
+
+           
+            const pW = document.body.clientWidth;
+
+            const pH = document.body.clientHeight;
+
+            let tempW  = ( pW > 900 ) ? 900 : pW;
+
+            let w = 0, h = 0;
+
+            if ( tempW > pH ) {
+                
+                w = pH, h = pH;
+
+            }else {
+
+                w = tempW, h = tempW;
+            }
+
+            gsap.set ('.container', { width : w, height : h });
+
+        }
+
+        function initPuzzle () {
+
+            gsap.set ('.container', { display : 'block' });
+
+            resize ();
+
+            addEvents ();
+
+            initGrid ();
+
+            initCells ();
+
+            activateCells ();
+
+            var tl = gsap.timeline ( {delay : 0.6, defaults: { duration : 0.6, ease : 'power2.out'} } );
+
+            tl
+                .add ('scene1')
+
+                .from ('.splash-screen', { scale : 0, ease : 'elastic(1, 0.6)', duration : 0.9 }, 'scene1' )
+
+                .to ('.arr-2', { opacity : 1 }, 'scene1+=0.5')
+
+                .to ('.arr-1', { opacity : 0.5 }, 'scene1+=0.5')
+
+                .set (['.btn-hs', '.arr-hs-2'], { display : 'block'}, 'scene1+=1')
+
+
+            //gsap.from ('.splash-screen', { scale : 0, transform : '50% 50%', ease : 'elastic(1, 0.6)', duration : 0.9, delay : 0.6 });
+            
+        }
+
+        function addEvents () {
+
+
+            document.addEventListener ('keydown', ( e ) => {
+
+                e.preventDefault();
+
+                keyIsDown ( e.keyCode )
+
+            });
+
+            document.addEventListener ('keyup', ( e ) => {
+
+                e.preventDefault();
+
+                keyDown = false;
+
+                showGuide ( false );
+
+            });
+
+            document.querySelectorAll ('.arr-hs').forEach ( (el, i) => {
+
+                el.addEventListener ('click', () => {
+                     
+                    if ( moving ) return;
+
+                    moving = true;
+                    console.log ( i );
+                    gsap.to ('.arr-' + (Number(i) + 1), { xPercent : i == 0 ? -1 : 1, yoyo:true, repeat : 1, ease : 'power2.out', duration : 0.3, yoyoEase : true, onComplete : () => {
+                        moving = false;
+                    } });
+
+                    changeField ( i );
+
+                });
+
+            });
+
+            document.querySelector('.cells-cont').style.gridTemplateColumns = 'repeat(' + puzzleData.col + ', 1fr)';
+
+            document.querySelector('.cells-cont').style.gridTemplateColumns = 'repeat(' + puzzleData.row + ', 1fr)';
+
+            // document.querySelector('.screen-btn-1').addEventListener ('click', () => {
+            //     removeScreen ('.splash-screen');
+            // });
+            document.querySelector('.btn-hs').addEventListener ('click', removeScreen );
+
+
+        }
+
+        function initCells () {
+
+
+            const main = document.querySelector('.cells-cont');
+
+            main.style.gridTemplateColumns = 'repeat('+ puzzleData.col +', 1fr)';
+
+            main.style.gridTemplateRows = 'repeat('+ puzzleData.row +', 1fr)';
+
+        
+            let count = 0;
+
+            cellsArr = [];
+
+
+            for ( let i = 0; i < puzzleData.col; i++ ) {
+
+
+                for ( let j = 0; j < puzzleData.row; j++ ) {
+
+                    var cell = document.createElement ('div');
+
+                    cell.className = 'cell'
+
+                    //..
+
+                    const cellImg = document.createElement ('div');
+
+                    cellImg.className = 'cell-img';
+
+                    cellImg.style.width = (Number ( puzzleData.col ) * 100) + '%';
+
+                    cellImg.style.height = (Number ( puzzleData.row ) * 100) + '%';
+
+                    cellImg.style.transform = `translate( -${ j * ( 100/puzzleData.row) }%, -${ i * ( 100/puzzleData.col) }% )`;
+
+        
+                    //..
+
+                    const cellTop = document.createElement ('div');
+
+                    cellTop.className = 'cell-top';
+                    
+        
+                    const cellPost = document.createElement ('div');
+                        
+                    cellPost.className = 'cell-post';
+
+                    cellPost.innerText = Number (count) + 1;
+                
+                    cell.append ( cellImg, cellTop, cellPost );
+
+                    cellsArr.push ({ 
+
+                        id : count,
+                        el : cell,
+                        // xpos : j,
+                        // ypos : i,
+                        gridPos : count
+
+                    });
+                    
+                    main.appendChild ( cell );
+
+                    count++;
+                }
+
+            }
+
+            gsap.from ('.cell', { duration : 0.3, scale :0 , stagger : {
+                from : 'random',
+                amount : 0.5,
+                // axis : 'x',
+            }, ease : 'power2.out' })
+
+        }   
+
+        function initGrid () {
+            
+            const grid = document.querySelector('.grid-cont');
+
+            grid.style.gridTemplateColumns = 'repeat('+ puzzleData.col +', 1fr)';
+
+            grid.style.gridTemplateRows = 'repeat('+ puzzleData.row +', 1fr)';
+
+            for ( var i = 0; i < ( puzzleData.col * puzzleData.row); i++ ) {
+
+                const gridCell = document.createElement ('div');
+
+                gridCell.className = 'grid-cell';
+                
+                grid.append ( gridCell );
+
+            }
+
+        }
+
+        function removeScreen () {
+
+            let str = endGame ? '.end-screen' : '.splash-screen';
+
+            gsap.set ('.arr' , { opacity : 0 });
+
+            gsap.set (['.btn-hs', '.arr-hs'], { display : 'none' });
+
+            
+
+            gsap.to ( str, { scale : 0, duration : 0.3, ease : 'power2.out', onComplete : () => {
+                
+                gsap.set ( str , { opacity : 0 });
+
+                startGame ();
+            }});
+
+        }
+
+        function startGame () {
+
+           
+            gsap.set (  cellsArr [ cellsArr.length - 1].el , { display : 'none' });
+
+            openCell = cellsArr.length - 1;
+
+            endGame = false;
+
+            jumblePosition();
+
+            //gameOn = true;
+
+        }
+
+        function changeField ( id ) {
+
+            field = id;
+
+            if ( id == 0 ) {
+                puzzleData = { col : 4, row : 4 };
+
+            }else {
+                puzzleData = { col : 5, row : 5 };
+            }
+
+            gsap.set ( '.arr-hs-1', { display : id == 1 ? 'block' : 'none' });
+            gsap.set ( '.arr-hs-2', { display : id == 0 ? 'block' : 'none' });
+
+
+            gsap.set ( '.arr-1', { opacity : id == 1 ? 1 : 0.5 });
+            gsap.set ( '.arr-2', { opacity : id == 0 ? 1 : 0.5 });
+            
+            
+            document.querySelectorAll ('.cell').forEach ( el => {
+                el.remove ();
+            })
+            document.querySelectorAll ('.grid-cell').forEach ( el => {
+                el.remove ();
+            });
+
+            initGrid ();
+
+            initCells ();
+
+            activateCells ();
+
+        }
+        
+        function activateCells () {
+
+            // for ( let i in cellsArr ) {
+
+            //     cellsArr[i].el.addEventListener ('click', () => {
+
+            //         moveCell ( cellsArr [i] );
+
+            //     });
+            // }
+
+            for ( let i in cellsArr ) {
+
+                var hammertime = new Hammer( cellsArr[i].el );
+
+                hammertime.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
+
+                hammertime.on('tap', function(ev) {
+                    
+                    // console.log(ev.type);
+
+                    moveCell ( cellsArr [i] );
+                });
+
+                hammertime.on('swipe', function(ev) {
+                    
+                    // console.log(ev.direction);
+
+
+                    validateMove ( i, ev.direction );
+
+                });
+
+            }
+
+        }
+
+        function validateMove ( id, dir ) {
+            
+            const dest = getDestination ( cellsArr[id].gridPos );
+
+            console.log ('a', dest, dir )
+
+
+            if ( (dir == 4 && dest == 'right') || (dir == 2 && dest == 'left') || ( dir == 8 && dest == 'up') || ( dir == 16 && dest == 'down') ) 
+            {
+                moveCell ( cellsArr[id] );
+            } 
+
+        }
+
+        function keyIsDown ( keyCode ) {
+
+            const openX = Math.floor ( openCell/ puzzleData.col );
+            
+            const openY =openCell % puzzleData.col;
+
+            console.log ( keyCode  );
+
+            switch ( keyCode ) {
+                case 37:
+                    keyMove ('left');
+                    break;
+                case 38:
+                    keyMove ('up');
+                    break;
+                case 39:
+                    keyMove ('right');
+                    break;
+                case 40: 
+                    keyMove ('down');
+                    break;
+                case 32 :
+                    showGuide ();
+                    break;
+                default :
+                        //..
+            }
+
+        }
+
+
+        function keyMove ( dir ) {
+
+            if ( keyDown ) return;
+
+            keyDown = true;
+
+            const adjacentCells = getAdjacents ();
+
+            for ( let i in cellsArr ) {
+
+                if ( adjacentCells.includes ( cellsArr [i].gridPos ) ) {
+
+                    if ( getDestination ( cellsArr[i].gridPos ) == dir ) moveCell ( cellsArr[i] );
+
+                }
+            }
+        }
+
+
+        function showGuide ( show = true ) {
+
+            if ( gameOn ) {
+
+                document.querySelectorAll ('.cell-post').forEach ( el => {
+                    el.style.opacity = show ? 1 : 0;
+                });
+
+            }
+
+        }
+    
+        function getAdjacents () {
+
+            const oC = openCell;
+
+            const tC = puzzleData.col;
+
+            const tR = puzzleData.row;
+
+
+            const r = Math.floor( oC / tR ),
+
+                c = oC % tC;
+
+            let arr = [];
+
+            if ( c-1 >=0 ) {
+
+                const left = (r * tR ) + (c - 1);
+
+                arr.push ( left );
+
+            }
+
+            if ( c+1 < tC ) {
+
+                const right = (r * tC ) + (c + 1);
+
+                arr.push ( right );
+            }
+
+            if ( r-1 >= 0 ) {
+
+                const top = ( (r-1) * tR ) + c;
+
+                arr.push ( top );
+
+            }
+
+            if ( r+1 < tR  ) {
+
+                const bottom = ( (r+1) * tC ) + c;
+
+                arr.push ( bottom );
+                
+            }
+                
+            return arr;
+
+        }
+
+        function moveCell ( data ) {
+
+            if ( gameOn ) {
+
+                // console.log ( openCell,  data );
+
+                const adjArr = getAdjacents ();
+
+                if ( adjArr.includes ( data.gridPos ) ) {
+
+
+                    const currPost = data.gridPos;
+
+                    const moveData = moveTo ( data.gridPos );
+
+                    if ( moveData.dir == 1 ) {
+
+                        gsap.to ( data.el, { duration : 0.1, zIndex : openCell + 1, ease : 'power3.out', top : moveData.point } );
+
+                    }else {
+
+                        gsap.to ( data.el, { duration : 0.1, zIndex : openCell + 1, ease : 'power3.out', left : moveData.point } );
+
+                    }
+                    
+
+                    cellsArr [ data.id ].gridPos = openCell;
+                    
+                    openCell = currPost;
+
+                    // console.log ('matched');
+                    
+                }
+
+                if ( isFinished () )  showEndScreen ();
+            }
+
+
+        }
+
+        function getDestination ( cellNumber ) {
+
+
+            const gridX = Math.floor ( cellNumber / puzzleData.col ) ;
+
+            const gridY = cellNumber % puzzleData.col;
+
+            //
+            const openX = Math.floor ( openCell  / puzzleData.col ) ;
+
+            const openY = openCell % puzzleData.col;
+
+            const xPos = openX - gridX;
+
+            const yPos = openY - gridY;
+
+            // console.log ( xPos, yPos );
+
+            if ( xPos == 0 && yPos == 1 ) return 'right';
+            
+            if ( xPos == 0 && yPos == -1 ) return 'left'
+
+            if ( xPos == 1 && yPos == 0 )  return  'down';
+
+            if ( xPos == -1 && yPos == 0 )  return 'up';
+
+
+        }
+
+        function moveTo ( post ) {
+
+             
+            const dir = getDestination ( post );
+
+            if ( dir == 'right' ) return { dir : 0, point : '+=100%' };
+            
+            if ( dir == 'left') return { dir : 0, point : '-=100%' };
+
+            if ( dir == 'down')  return { dir : 1, point : '+=100%' };
+
+            if ( dir == 'up' )  return { dir : 1, point : '-=100%' };
+            
+        }
+
+        function getCellResident ( pos ) {
+
+            for ( let i in cellsArr ) {
+
+                if ( cellsArr[i].gridPos === pos ) return i;
+            }
+        }
+
+        function jumblePosition () {
+
+            var counter = 0;
+
+            //while ( counter < 1000 ) {
+
+            var timer = setInterval ( () => {
+                
+                const adjArr = getAdjacents ();
+                                
+                const randomIndex = Math.floor ( Math.random() * adjArr.length );
+
+                const toOpenCell = adjArr [ randomIndex ];
+
+                const cellId = getCellResident ( toOpenCell );
+
+
+                //get cells..
+
+                const cell = cellsArr [ cellId ].el;
+
+                const moveData = moveTo ( toOpenCell );
+
+                if ( moveData.dir == 1 ) {
+
+                    gsap.set ( cell, { duration : 0.1, zIndex : toOpenCell + 1, top : moveData.point } );
+
+                }else {
+
+                    gsap.set ( cell, { duration : 0.1, zIndex : toOpenCell + 1, left : moveData.point } );
+
+                }
+
+
+                //..
+                //gsap.set ( cell, { x : disX,  y : disY, zIndex : openCell + 1 });
+
+                cellsArr [ cellId ].gridPos = openCell;
+
+
+                openCell = toOpenCell;
+
+                counter++;
+
+                // console.log ( counter );
+
+                if ( counter >= 500 ) {
+                    clearInterval ( timer);
+                    gameOn = true;
+                }
+
+            }, 1 );
+
+            // this.isGameOn = true;
+                
+        }
+    
+        function isFinished () {
+
+            for ( let i in cellsArr ) {
+                if ( cellsArr[i].id !== cellsArr[i].gridPos ) return false;
+            }
+            return true;
+        }
+
+        function showEndScreen () {
+            //..
+            gameOn = false;
+
+            endGame = true;
+
+            console.log ('this is done..');
+
+            gsap.set (  cellsArr [ cellsArr.length - 1].el , { display : 'block' });
+            
+            gsap.fromTo (  cellsArr [ cellsArr.length - 1].el , { opacity : 0, scale : 0 }, { opacity : 1, scale : 1, duration : 0.5, ease : 'power1.out', delay : 0.5 });
+
+            gsap.set ('.btn-hs', { display : 'block' });
+
+            gsap.set ('.end-screen', { opacity:1, scale : 0 });
+
+            gsap.to ('.end-screen', { scale : 1, transform : '50% 50%', ease : 'elastic(1, 0.6)', duration : 0.9 });
+
+
+
+            gsap.set ( '.arr-hs-1', { display : field == 1 ? 'block' : 'none' });
+            gsap.set ( '.arr-hs-2', { display : field == 0 ? 'block' : 'none' });
+
+
+            gsap.to ( '.arr-1', { opacity : field == 1 ? 1 : 0.5, duration : 0.6, delay : 0.5 });
+            gsap.to ( '.arr-2', { opacity : field == 0 ? 1 : 0.5, duration : 0.6, delay : 0.5 });
+            
+
+            
+        }
+
+
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,325 @@
+{
+    "profile" : {
+        "firstName" : "Charlou",
+        "lastName" : "Nicolas",
+        "middleName" : "Ermino",
+        "about" : "I am a dedicated web developer with a keen eye for detail and a passion for crafting digital experiences. My journey in web development began with a strong foundation in HTML5, CSS3, and JavaScript, and I've since expanded my skills to include various front-end and back-end technologies.",
+        
+        "pictures" : [
+            "profile1.jpg",
+            "profile2.jpg",
+            "profile3.jpg"
+        ],
+        "details" : {
+            "age" : "41",
+            "email" : "chalnicol@gmail.com",
+            "website" : "http://charlounicolas.tech",
+            "phone" : "(+63) 9694547951",
+            "birthday" : "1983-01-01",
+            "address" : "SHV Caloocan City, PH 1400",
+            "languages" : [
+                { 
+                    "name" : "English",
+                    "proficiencyLevel" : 90
+                },
+                { 
+                    "name" : "Tagalog",
+                    "proficiency level" : 99
+                }
+            ],
+            "socials" : [
+                {
+                    "name" : "github",
+                    "thumbnail" : "github.png",
+                    "url" : "https://github.com/chalnicol/"
+                },
+                {
+                    "name" : "linkedin",
+                    "thumbnail" : "linkedin.png",
+                    "url" : "https://www.linkedin.com/in/charlou-nicolas-ba201432/"
+                },
+                {
+                    "name" : "twitter",
+                    "thumbnail" : "x.png",
+                    "url" : "https://x.com/Chalnicol"
+                },
+                {
+                    "name" : "instagram",
+                    "thumbnail" : "ig.png",
+                    "url" : "https://www.instagram.com/chalnicol/"
+                },
+                {
+                    "name" : "facebook",
+                    "thumbnail" : "fb.png",
+                    "url" : "https://www.facebook.com/charlou.nicolas"
+                }
+            ]
+        },
+        "recentWorks" : [
+            {
+                "title" : "Salpakan",
+                "type" : "web",
+                "description" : "HTML5 game",
+                "url" : "https://salpakan2021.onrender.com/",
+                "image" : "salpakan.png"
+            },
+            {
+                "title" : "Solitaire",
+                "type" : "web",
+                "description" : "HTML5 game",
+                "url" : "solitaire/index.html",
+                "image" : "solitaire.jpg"
+
+            },
+            {
+                "title" : "Block Puzzle",
+                "type" : "mobile",
+                "description" : "HTML5 game",
+                "url" : "blockpuzzle/index.html",
+                "image" : "blockpuzzle.png"
+
+            },
+            {
+                "title" : "Connect 4",
+                "type" : "web",
+                "description" : "HTML5 game",
+                "url" : "https://connectfour2020.onrender.com/",
+                "image" : "connect4.png"
+
+            },
+            {
+                "title" : "Sushis' Recital",
+                "type" : "web",
+                "description" : "3D Animation w/ ThreeJS",
+                "url" : "animationchallenge2023/index.html",
+                "image" : "sushi.jpg"
+
+            },
+            {
+                "title" : "OhDio Flipbook Ad",
+                "type" : "mobile",
+                "description" : "Mobile Ad Banner",
+                "url" : "ohdio_jeunesse_flipbook/index.html",
+                "image" : "flipbook.jpg"
+
+            },
+            {
+                "title" : "Glenlivet 'The Flip' Ad",
+                "type" : "mobile",
+                "description" : "Mobile Ad Banner",
+                "url" : "glenlivet_theflip/index.html",
+                "image" : "theflip.jpg"
+
+            },
+            {
+                "title" : "Creative Gallery",
+                "type" : "web",
+                "description" : "Gallery website",
+                "url" : "https://gallery.nativetouch.com/",
+                "image" : "cgallery.jpg"
+
+            }
+            
+           
+           
+            
+          
+        ],
+        "workExperience" : [
+            {
+                "company" : "Wideout Technology",
+                "start" : "December 2007",
+                "end" : "December 2008",
+                "position" : "Junior  Rich Media Developer",
+                "jobDescription" :[
+                    "Converted client-built Flash advertisements to production standards, requiring solid ability to read and comprehend 3rd-party code while adhering to strict best practices. Modified client code to utilize in-house video player and track user interaction.", 
+                    "Handled Custom development tasks that requires Web services, scripts and 3rd party APIs.", "Trains newly hired developers in the Production floor."
+                ]
+            },
+            {
+                "company" : "Wideout Technology",
+                "start" : "December 2008",
+                "end" : "December 2009",
+                "position" : "Senior Rich Media Developer",
+                "jobDescription" :[
+                    "Communicates with the Team Lead and QA Lead regarding tasks at hand.", 
+                    "Handled various types of ad formats with different levels of complexity.", 
+                    "Handled Custom development tasks that requires Web services, scripts and 3rd party APIs.", 
+                    "Trains newly hired developers in the Production floor."
+                ]
+            },
+            {
+                "company" : "Wideout Technology",
+                "start" : "December 2009",
+                "end" : "March 2010",
+                "position" : "Rich Media Quality Assurance Specialist",
+                "jobDescription" :[
+                    "Communicates with the Production Team Lead, QA Lead, and Production Services regarding Rich Media campaigns, issues, and documentation of campaigns.", 
+                    "Checks and tests various types of ads with different levels of complexity according to site and client specifications."
+                ]
+            },
+            {
+                "company" : "Wideout Technology",
+                "start" : "March 2010",
+                "end" : "April 2011",
+                "position" : "Rich Media Specialist",
+                "jobDescription" :[
+                    "Handles campaigns from Start to finish (From Development phase up to Client Approval).", 
+                    "Manages Rich Media Campaigns and Technical Requests assigned to the team.", "Communicates with Campaign Managers, Creative Technical Account Managers with regards to campaign details, escalation, and reporting of bugs found on development."
+                ]
+            },
+            {
+                "company" : "Wideout Technology",
+                "start" : "March 2012",
+                "end" : "December 2012",
+                "position" : "Technical Expert",
+                "jobDescription" :[
+                    "Handles rich media escalations and provide solutions in the earliest time possible.", 
+                    "Handles testing of new rich media products before they are publicly released to production.", 
+                    "Develops software system using Google technologies that improves/solves production issues."
+                ]
+            },
+            {
+                "company" : "Smart Rover",
+                "start" : "March 2012",
+                "end" : "December 2012",
+                "position" : "Flash Game Developer",
+                "jobDescription" :[
+                    "Handles custom development/programming tasks that requires Flash scripting." 
+                ]
+            },
+            {
+                "company" : "StrikeVideo",
+                "start" : "December 2012",
+                "end" : "May 2014",
+                "position" : "Ad Operations Trafficker",
+                "jobDescription" :[
+                    "Pulls availability forecast.", 
+                    "Traffics ads in Appnexus, Rubicon and AdWords; familiar with 3rd party vendors such as DFA, Mediamind, FlashTalking and Pointroll.", 
+                    "QAs creative tags before setting them live.", 
+                    "Works with Account Management in applying optimizations to live campaigns to ensure full delivery.", 
+                    "Troubleshoots site issues and works with Tech Support to resolve the issue."
+                ]
+            },
+            {
+                "company" : "StrikeVideo",
+                "start" : "May 2014",
+                "end" : "September 2015",
+                "position" : "Quality Assurance Specialist",
+                "jobDescription" :[
+                    "QA’d all ad units created by StrikeVideo, mostly interstitial video.", 
+                    "Made sure all ad units have been tested, all requirements met to their respected live environments."
+                ]
+            },
+            {
+                "company" : "",
+                "start" : "September 2015",
+                "end" : "June 2021",
+                "position" : "Freelance PHP/HTML5 Developer",
+                "jobDescription" :[
+                    "Handles custom development/programming tasks that requires JS/PHP scripting." 
+                ]
+            },
+            {
+                "company" : "Native Touch / Candy Banners",
+                "start" : "June 2021",
+                "end" : "September 2023",
+                "position" : "Creative Production Specialist",
+                "jobDescription" :[
+                    "Assist or take lead in the development and implementation of creative ad solutions.", 
+                    "Build animated and interactive HTML5 ads using assets provided from our creative team.", 
+                    "Adhere to brand guidelines when building interactive ads.", "Work with online HTML5 mobile ad builders, JavaScript libraries and APIs to build mobile ads.", 
+                    "Research and ideate new ways to enhance the mobile advertising experience by leveraging various JavaScript libraries.", 
+                    "Collaborate with other developers, designers, and cross-functional team members.", "Interact with Project Managers and Account Managers."]
+            }
+           
+        ],
+        "skills" : [
+            {
+                "name" : "HTML5",
+                "level" : "95"
+            },
+            {
+                "name" : "CSS3",
+                "level" : "95"
+            },
+            {
+                "name" : "Tailwind",
+                "level" : "95"
+            },
+            {
+                "name" : "Bootstrap",
+                "level" : "95"
+            },
+            {
+                "name" : "Bulma",
+                "level" : "95"
+            },
+            {
+                "name" : "GSAP",
+                "level" : "95"
+            },
+           
+            {
+                "name" : "JavaScript",
+                "level" : "90"
+            },
+            {
+                "name" : "VueJS",
+                "level" : "90"
+            },
+              
+            {
+                "name" : "JQuery",
+                "level" : "60"
+            },
+            {
+                "name" : "ReactJS",
+                "level" : "75"
+            },
+            {
+                "name" : "NodeJS",
+                "level" : "50"
+            },
+            {
+                "name" : "ThreeJS",
+                "level" : "50"
+            },
+            {
+                "name" : "Phaser",
+                "level" : "85"
+            },
+          
+            {
+                "name" : "Phyton",
+                "level" : "50"
+            },
+           
+            {
+                "name" : "PHP",
+                "level" : "90"
+            },
+            {
+                "name" : "Laravel",
+                "level" : "90"
+            },
+            {
+                "name" : "MySQL",
+                "level" : "75"
+            },
+            {
+                "name" : "Wordpress",
+                "level" : "75"
+            },
+            {
+                "name" : "Git",
+                "level" : "75"
+            },
+            {
+                "name" : "Blender",
+                "level" : "40"
+            }
+        ]
+        
+    }
+}

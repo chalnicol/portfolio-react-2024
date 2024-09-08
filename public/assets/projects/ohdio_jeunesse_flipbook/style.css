@@ -1,0 +1,266 @@
+
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    background-color: white;
+    padding: 0;
+    margin : 0;
+    height : 100vh;
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+}
+
+
+.progress-bar-cont {
+    width: 100%;
+    height : 100%;
+}
+
+.progress-bar {
+    width: 45%;
+    max-width: 250px;
+    height : 6px;
+    border : 1px solid #333;
+
+    border-radius: 3px;
+    overflow: hidden;
+    position: absolute;
+    top : 50%;
+    left : 50%;
+    transform: translate(-50%, -50%);
+}
+
+.progress {
+    width : 10%;
+    height : 100%;
+    background-color: black;
+}
+
+.container {
+    position: absolute;
+    width: 100%;
+    height : 100%;
+    overflow: hidden;
+    background-color: #000;
+    display: none;
+   
+}
+
+.container * {
+
+    width: 100%;
+    height : 100%;
+
+    position:absolute;
+    pointer-events: none;
+    user-select: none;
+}
+
+.clickthru {
+    width: 100%;
+    height : 100%;
+    pointer-events: auto;
+}
+
+.border {
+    width: 100%;
+    height : 100%;
+    border : 1px solid #000;
+    z-index: 999;
+    pointer-events: none;
+}
+
+.cards {
+    width: 100%;
+    height : 100%;
+}
+
+.card {
+    width: 100%;
+    height : 100%;
+    left : 100%;
+    background-color: #F2F1DF;
+    /* border: 1px solid #ccc; */
+    pointer-events: auto;
+    overflow: hidden;
+    box-shadow: -3px 0 10px #3a3a3a;
+}
+
+.card-bg {
+    background: url('images/bg.png') no-repeat bottom center;
+    background-size: contain;
+}
+
+.card-img {
+    width: 100%;
+    height : 100%;
+}
+.card-img-1 {
+    background: url('images/img1.png') no-repeat top center;
+    background-size: contain;
+}
+.card-img-2 {
+    background: url('images/img2.png') no-repeat top center;
+    background-size: contain;
+}
+.card-img-3 {
+    background: url('images/img3.png') no-repeat top center;
+    background-size: contain;
+}
+.card-img-4 {
+    background: url('images/img4.png') no-repeat top center;
+    background-size: contain;
+}
+.card-img-5 {
+    background: url('images/img5.png') no-repeat top center;
+    background-size: contain;
+}
+
+
+
+
+.card-title {
+
+    width: 100%;
+    height : 100%;
+    /* width: 85%; */
+    /* transform: translateX(-50%); */
+    opacity: 0;
+
+}
+
+.card-title-1 {
+    background: url('images/desc1.png') no-repeat top center;
+    background-size: contain;
+}
+.card-title-2 {
+    background: url('images/desc2.png') no-repeat top center;
+    background-size: contain;
+}
+.card-title-3 {
+    background: url('images/desc3.png') no-repeat top center;
+    background-size: contain;
+}
+.card-title-4 {
+    background: url('images/desc4.png') no-repeat top center;
+    background-size: contain;
+} 
+.card-title-5 {
+    background: url('images/desc5.png') no-repeat top center;
+    background-size: contain;
+} 
+
+
+.tap-overlay {
+    background-color: #0a0a0a;
+    opacity: 0.9;
+    width: 100%;
+    height : 100%;
+}
+.tap-logo {
+    width: 100%;
+    height : 100%;
+    background: url('images/tap_logo.png') no-repeat top center;
+    background-size: contain;
+}
+
+.tap-txt-1 {
+    width: 100%;
+    height : 100%;
+    background: url('images/tap_txt1.png') no-repeat top center;
+    background-size: contain;
+}
+
+.tap-txt-2 {
+    width: 100%;
+    height : 100%;
+    background: url('images/tap_txt2.png') no-repeat top center;
+    background-size: contain;
+}
+
+.tap-view {
+    width: 100%;
+    height : 100%;
+    background: url('images/tap_view.png') no-repeat top center;
+    background-size: contain;
+
+}
+
+.bottom-panel {
+    bottom: 0;
+    opacity: 0;
+    overflow: hidden;
+    display: none;
+}
+
+.bottom-bg {
+    background: url('images/bot_bg.png') no-repeat center center;
+    background-size: contain ;
+}
+
+.bottom-logo {
+    background: url('images/bot_logo.png') no-repeat center center;
+    background-size: contain ;
+}
+
+.bottom-txt {
+    right : -7%;
+    background: url('images/bot_txt.png') no-repeat center center;
+    background-size: contain ;
+}
+
+
+.bottom-hotspot {
+    width: 100%;
+    height: 11%;
+    right : 0%;
+    bottom : 0;
+    pointer-events: auto;
+    /* background-color: #ff000066; */
+}
+
+.next {
+    width: 20%;
+    height: 10%;
+    bottom: 10%;
+    right : 18%;
+    background:  url('images/nav_next.png') no-repeat center;
+    background-size: contain;
+    pointer-events: auto;
+    display: none;
+}
+
+
+.back {
+
+    display: none;
+    opacity: 0;
+    width: 20%;
+    height: 10%;
+    bottom : 10%;
+    left : 2%;
+    pointer-events: auto;
+    user-select: none;
+    background:  url('images/nav_back.png') no-repeat center center;
+    background-size: contain;
+    
+}
+
+.flash {
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    opacity : 0;
+}
+
+.flex {
+
+    width: auto;
+    height : auto;
+    left : 50%;
+    transform: translateX(-50%);
+
+    overflow: hidden;
+}
